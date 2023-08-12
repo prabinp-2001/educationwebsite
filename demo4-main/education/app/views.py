@@ -39,17 +39,11 @@ def form1(request):
         cn=request.POST['coursename']
         current_user = request.user
 
-        if courseregistration.objects.filter(email=em).exists():
-             messages.error(request,'email id already exist')
-             return redirect('form1')
         
-        elif courseregistration.objects.filter(coursename=cn).exists():
+        if courseregistration.objects.filter(user_id=current_user.id,coursename=cn).exists():
              messages.error(request,'already registered')
              return redirect('form1')
         
-        elif courseregistration.objects.filter(phoneno=ph).exists():
-             messages.error(request,'phone number already exist')
-             return redirect('form1')
         
         else:
             o=courseregistration.objects.create(phoneno=ph,email=em,coursename=cn,user_id=current_user.id)

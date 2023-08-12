@@ -48,13 +48,19 @@
           <div class="profile-pic">
             <img src="../static/images/img_avatar.png" alt="profile-pic">
             <p class="font-weight-bold text-uppercase pt-2">{{user.username}}</p>
+
           </div>
           <div class="persional-details">
-            {% for i in s %}
+
             <div class="input-box">
               <label for="">Email id :</label> &nbsp;
-              <input type="text" value="{{i.email}}" readonly>
+              <input type="text" value="{{user.email}}" readonly>
             </div>
+
+           
+
+            {% for i in s %}
+              
             <div class="input-box">
               <label for="">Phoneno :</label>&nbsp;
               <input type="tel" value="{{i.phoneno}}" readonly style="width: 140px;">
@@ -62,6 +68,8 @@
                 <i class="fa-solid fa-pen-to-square"></i>
               </a>
             </div>
+
+            <br>
             <div class="input-box">
               <label for="">CourseName :</label>&nbsp;
               <input type="text" value="{{i.coursename}}" readonly>
@@ -70,6 +78,7 @@
             <div class="input-box">
               {% if i.coursename == 'computer science' %}
               <button class="viewB"><a href="{% url 'computer' %}">View {{i.coursename}}</a></button>
+
               {% elif i.coursename == 'jee' %}
               <button class="viewB"><a href="{% url 'jee' %}">View {{i.coursename}}</a></button>
               {% elif i.coursename == 'gate' %}
